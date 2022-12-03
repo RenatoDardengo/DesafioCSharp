@@ -6,14 +6,37 @@ namespace desafio
 {
     class Program
     {
+
         static void Main(string[] args)
         { // EXERCÍCIO USANDO ORIENTAÇÃO A OBJETOS
+        //   new Aluno(){Nome="José", Matricula="003", Notas =new List<double>(){6,7.5,6}}.Salvar();
+            Console.WriteLine("Resultado dos alunos");
+            var alunosDB = Aluno.Todos();
+            foreach (var aluno in alunosDB)
+            {
+              
+                aluno.ApagarporId();
+                break;
+                Console.WriteLine("_____________________________");
+                Console.WriteLine($"Nome: {aluno.Nome} - Matrícula: {aluno.Matricula}");
+                int i = 1;
+                foreach (double notas in aluno.Notas)
+                {
+                    Console.WriteLine($"{i}ª nota: {notas}");
+                    i++;
+                }
+                Console.WriteLine($"Situação: {aluno.Situacao()}");
+
+            }
+           
+        return;
 
             List<Aluno> alunos = new List<Aluno>();
             Console.WriteLine("************ Sistema Registro de Notas ******************");
         menu:
             Console.WriteLine("Digite uma opção:\n 1 - cadastrar notas\n 2 - Exibir aprovados \n 3 -sair");
             int option = int.Parse(Console.ReadLine());
+
 
             switch (option)
             {
@@ -49,8 +72,9 @@ namespace desafio
                     {
                         Console.WriteLine("_____________________________");
                         Console.WriteLine($"Nome: {aluno.Nome} - Matrícula: {aluno.Matricula}");
-                        int i= 1;
-                        foreach(double notas in aluno.Notas){
+                        int i = 1;
+                        foreach (double notas in aluno.Notas)
+                        {
                             Console.WriteLine($"{i}ª nota: {notas}");
                             i++;
                         }
@@ -59,14 +83,17 @@ namespace desafio
                     }
                     Console.WriteLine("Escolha uma opção:\n 0 - Encerrar \n 1 - Retornar ao Menu");
                     int result = int.Parse(Console.ReadLine());
-                    if(result==0){
+                    if (result == 0)
+                    {
                         return;
-                    }else{
+                    }
+                    else
+                    {
 
-                    goto menu;
+                        goto menu;
                     }
 
-                    
+
                 case 3:
                     return;
                 default:
